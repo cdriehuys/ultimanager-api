@@ -106,3 +106,7 @@ ENV/
 
 # Development database
 *.sqlite3
+
+
+# Ansible artifacts
+*.retry
