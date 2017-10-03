@@ -1,4 +1,6 @@
 ---
+# Django App Config
+
 app_name: ultimanager-api
 app_package: ultimanager_api
 
@@ -7,3 +9,37 @@ app_repo: 'https://github.com/cdriehuys/ultimanager-api'
 django_requirements: "{{ django_project }}/requirements/base.txt"
 django_secret_key: "{{ vault_django_secret_key }}"
 django_settings_module: ultimanager_api.production_settings
+
+django_databases:
+  default:
+    ENGINE: django.db.backends.postgresql_psycopg2
+    NAME: "{{ db_name }}"
+    USER: "{{ db_user }}"
+    PASSWORD: "{{ db_password }}"
+    HOST: localhost
+    PORT: 5432
+
+django_manage_commands:
+  - collectstatic --noinput
+
+
+# NGINX Config
+
+nginx_socket: 'http://{{ gunicorn_socket_unix }}'
+
+nginx_site_servers:
+  - name: "{{ inventory_hostname }}"
+    listen: 80
+    extra_params: |
+          location = /favicon.ico {
+              access_log off;
+          }
+
+          location /static/ {
+            alias {{ django_static_root }}/;
+          }
+
+          location / {
+              include proxy_params;
+              proxy_pass {{ nginx_socket }};
+          }

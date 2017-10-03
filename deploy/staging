@@ -1,8 +1,8 @@
 [dbservers]
-104.131.5.203
+dev.api.ultimanager.com
 
 [webservers]
-104.131.5.203
+dev.api.ultimanager.com
 
 [webservers:vars]
 app_repo_version = develop
