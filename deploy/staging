@@ -1,0 +1,11 @@
+[dbservers]
+dev.api.ultimanager.com
+
+[webservers]
+dev.api.ultimanager.com
+
+[webservers:vars]
+app_repo_version = develop
+
+[all:vars]
+env = staging
