@@ -1,9 +1,7 @@
 ---
-- hosts: webservers
-  gather_facts: no
+- hosts: dbservers
 
   become: yes
-  become_user: root
   remote_user: ansible
 
   vars_files:
@@ -11,5 +9,4 @@
     - env_vars/{{ env }}-vault.yml
 
   roles:
-    - cdriehuys.django-app
-    - cdriehuys.nginx
+    - ANXS.postgresql

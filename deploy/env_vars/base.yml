@@ -1,0 +1,4 @@
+---
+db_name: ultimanager
+db_user: django
+db_password: "{{ vault_db_password }}"

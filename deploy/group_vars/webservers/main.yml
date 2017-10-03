@@ -6,7 +6,10 @@ app_package: ultimanager_api
 
 app_repo: 'https://github.com/cdriehuys/ultimanager-api'
 
-django_requirements: "{{ django_project }}/requirements/base.txt"
+app_required_packages:
+  - libpq-dev
+
+django_requirements: "{{ django_project }}/requirements/production.txt"
 django_secret_key: "{{ vault_django_secret_key }}"
 django_settings_module: ultimanager_api.production_settings
 
