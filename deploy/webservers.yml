@@ -1,0 +1,10 @@
+---
+- hosts: webservers
+  gather_facts: no
+
+  become: yes
+  become_user: root
+  remote_user: ansible
+
+  roles:
+    - cdriehuys.django-app

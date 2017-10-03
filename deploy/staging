@@ -3,3 +3,6 @@
 
 [webservers]
 104.131.5.203
+
+[webservers:vars]
+app_repo_version = develop

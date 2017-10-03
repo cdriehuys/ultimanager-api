@@ -1,8 +1,2 @@
-- hosts: all
-  gather_facts: no
-
-  become_user: root
-  remote_user: ansible
-
-  tasks:
-    - ping:
+---
+- include: webservers.yml

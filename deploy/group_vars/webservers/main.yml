@@ -1,0 +1,9 @@
+---
+app_name: ultimanager-api
+app_package: ultimanager_api
+
+app_repo: 'https://github.com/cdriehuys/ultimanager-api'
+
+django_requirements: "{{ django_project }}/requirements/base.txt"
+django_secret_key: "{{ vault_django_secret_key }}"
+django_settings_module: ultimanager_api.production_settings
