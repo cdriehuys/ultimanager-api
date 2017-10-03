@@ -103,3 +103,6 @@ ENV/
 # Sublime Text project files
 *.sublime-project
 *.sublime-workspace
+
+# Development database
+*.sqlite3

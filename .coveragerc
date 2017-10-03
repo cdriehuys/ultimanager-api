@@ -1,0 +1,9 @@
+[run]
+branch = True
+omit = \
+    */tests/*,
+    ultimanager_api/manage.py,
+    ultimanager_api/ultimanager_api/wsgi.py,
+    */migrations/*,
+    */admin.py,
+source = ultimanager_api
