@@ -1,0 +1,12 @@
+[run]
+branch = True
+omit = \
+    */tests/*,
+    */migrations/*,
+    */admin.py,
+    */conftest.py,
+    */factories.py,
+    */manage.py,
+    */urls.py,
+    */wsgi.py
+source = ultimanager_api
