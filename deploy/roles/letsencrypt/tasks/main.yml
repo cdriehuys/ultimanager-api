@@ -1,0 +1,29 @@
+---
+- name: Add certbot repository
+  become: yes
+  apt_repository:
+    repo: "{{ certbot_repo }}"
+
+- name: Install certbot
+  become: yes
+  apt:
+    name: python-certbot-nginx
+    update_cache: yes
+
+- name: Generate strong Diffie-Hellman parameters
+  become: yes
+  command: openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048
+  args:
+    creates: /etc/ssl/certs/dhparam.pem
+
+- name: Generate SSL certificate
+  become: yes
+  command: certbot --nginx -d {{ inventory_hostname }} --agree-tos -n -m chathan@driehuys.com
+
+- name: Setup cron job to renew certificate
+  become: yes
+  cron:
+    name: Renew letsencrypt certificates
+    hour: 3
+    minute: 47
+    job: /usr/bin/certbot renew --quiet
